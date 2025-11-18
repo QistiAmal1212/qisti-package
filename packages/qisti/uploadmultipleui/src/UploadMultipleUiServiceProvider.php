@@ -2,6 +2,7 @@
 
 namespace Qisti\UploadMultipleUi;
 
+use Illuminate\Support\Facades\Blade;
 use Illuminate\Support\ServiceProvider;
 
 class UploadMultipleUiServiceProvider extends ServiceProvider
@@ -15,6 +16,8 @@ class UploadMultipleUiServiceProvider extends ServiceProvider
     {
         $this->loadRoutesFrom(__DIR__ . '/../routes/web.php');
         $this->loadViewsFrom(__DIR__ . '/../resources/views', 'uploadmultipleui');
+        Blade::component('uploadmultipleui::components.dropzone', 'smart-upload');
+        Blade::component('uploadmultipleui::components.dropzone', 'qisti-multiupload');
 
         if ($this->app->runningInConsole()) {
             $this->publishes([
