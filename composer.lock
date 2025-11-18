@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "59c247cfc8e4f0bc686ba1130ac3ce6e",
+    "content-hash": "2718786033b7aff0105b1caab8c804a6",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -3585,6 +3585,36 @@
                 "source": "https://github.com/bobthecow/psysh/tree/v0.12.14"
             },
             "time": "2025-10-27T17:15:31+00:00"
+        },
+        {
+            "name": "qisti/uploadmultipleui",
+            "version": "dev-main",
+            "dist": {
+                "type": "path",
+                "url": "packages/qisti/uploadmultipleui",
+                "reference": "1002393cdc29d9d9bb1326cce1d23331bef990ca"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Qisti\\UploadMultipleUi\\UploadMultipleUiServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Qisti\\UploadMultipleUi\\": "src/"
+                }
+            },
+            "license": [
+                "MIT"
+            ],
+            "description": "A simple Blade-based UI for uploading multiple files in Laravel.",
+            "transport-options": {
+                "symlink": true,
+                "relative": true
+            }
         },
         {
             "name": "ralouphie/getallheaders",
@@ -9821,7 +9851,9 @@
     ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": {},
+    "stability-flags": {
+        "qisti/uploadmultipleui": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

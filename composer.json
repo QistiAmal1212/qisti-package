@@ -8,7 +8,20 @@
         "framework"
     ],
     "license": "MIT",
+    "repositories": [
+        {
+            "type": "path",
+            "url": "packages/qisti/uploadmultipleui",
+            "options": {
+                "symlink": true
+            }
+        },
+        {
+            "packagist.org": false
+        }
+    ],
     "require": {
+        "qisti/uploadmultipleui": "dev-main",
         "php": "^8.2",
         "laravel/fortify": "^1.30",
         "laravel/framework": "^12.0",

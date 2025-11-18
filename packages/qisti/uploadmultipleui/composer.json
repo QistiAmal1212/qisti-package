@@ -1,0 +1,20 @@
+{
+    "name": "qisti/uploadmultipleui",
+    "description": "A simple Blade-based UI for uploading multiple files in Laravel.",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Qisti\\UploadMultipleUi\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Qisti\\UploadMultipleUi\\UploadMultipleUiServiceProvider"
+            ]
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
