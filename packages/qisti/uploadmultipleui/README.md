@@ -47,6 +47,33 @@ Blade-powered UI for uploading multiple files to your Laravel app. Ships with ro
   Route::get('/my-upload', [\Qisti\UploadMultipleUi\Http\Controllers\UploadMultipleUiController::class, 'index']);
   Route::post('/my-upload', [\Qisti\UploadMultipleUi\Http\Controllers\UploadMultipleUiController::class, 'store']);
   ```
+- Example controller snippet if you want to handle storage yourself:
+  ```php
+  use Illuminate\Http\Request;
+  use Illuminate\Support\Facades\Storage;
+
+  public function store(Request $request)
+  {
+      $data = $request->validate([
+          'files' => ['required', 'array', 'max:' . config('uploadmultipleui.max_files')],
+          'files.*' => [
+              'file',
+              'max:' . config('uploadmultipleui.max_size'), // size in KB
+              'mimes:doc,docx,xls,xlsx,zip,pdf,png,jpg,jpeg',
+          ],
+      ]);
+
+      $disk = config('uploadmultipleui.disk', 'public');
+      $path = trim(config('uploadmultipleui.path', 'uploads'), '/');
+      $stored = [];
+
+      foreach ($data['files'] as $file) {
+          $stored[] = $file->store($path, $disk); // returns path/to/file.ext
+      }
+
+      return back()->with('uploaded', $stored);
+  }
+  ```
 
 ## Configuration
 `config/uploadmultipleui.php` (publishable) exposes:
@@ -58,3 +85,4 @@ Blade-powered UI for uploading multiple files to your Laravel app. Ships with ro
 - `route_prefix`: URL prefix for the package routes
 
 The included controller validates the limits, stores each file on the configured disk/path, and returns a success list of stored locations.
+# smart-upload
